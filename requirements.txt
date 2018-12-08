@@ -1,7 +1,7 @@
-requests
-urllib
-feedparser
-polyglot
-numpy
-tqdm
-flask
+requests==2.18.4
+feedparser==5.2.1
+polyglot==16.7.4
+numpy==1.13.1
+tqdm==4.11.2
+flask==1.0.2
+json2html==1.2.1

@@ -1,0 +1,4 @@
+Geoffrey Hinton
+Andrew Y. Ng
+Alex Graves
+Abdel Rahman

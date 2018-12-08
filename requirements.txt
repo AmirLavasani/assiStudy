@@ -1,0 +1,7 @@
+requests
+urllib
+feedparser
+polyglot
+numpy
+tqdm
+flask

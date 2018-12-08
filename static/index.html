@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>AssiStudy</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="/static/images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/static/vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/static/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/static/vendor/animate/animate.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/static/vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/static/vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/static/vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/static/vendor/daterangepicker/daterangepicker.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/static/css/util.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/main.css">
+<!--===============================================================================================-->
+</head>
+<body>
+
+
+	<div class="container-contact100">
+		<div class="wrap-contact100">
+			<form class="contact100-form validate-form" action="/search" method="post" id="seachform">
+				<span class="contact100-form-title">
+					Find best Professor for your PHD study :D
+				</span>
+
+				<div class="wrap-input100 validate-input" data-validate="Name is required">
+					<span class="label-input100">Your Name</span>
+					<input class="input100" type="text" name="user_name" placeholder="Enter your name">
+					<span class="focus-input100"></span>
+				</div>
+
+				<div class="wrap-input100 validate-input" data-validate = "professors list is required">
+					<span class="label-input100">Your list of Professors</span>
+					<textarea class="input100" name="prof_list" placeholder="Your list of professors here..."></textarea>
+					<span class="focus-input100"></span>
+				</div>
+
+				<div class="wrap-input100 input100-select">
+					<span class="label-input100"># Result Top Papers</span>
+					<div>
+						<select class="selection-2" name="return_papers">
+							<option>1</option>
+							<option>3</option>
+							<option>5</option>							
+						</select>
+					</div>
+					<span class="focus-input100"></span>
+				</div>
+
+				<div class="wrap-input100 input100-select">
+					<span class="label-input100"># Paper Search</span>
+					<div>
+						<select class="selection-2" name="search_papers">							
+							<option>10</option>
+							<option>20</option>
+							<option>50</option>
+						</select>
+					</div>
+					<span class="focus-input100"></span>
+				</div>
+
+				<div class="wrap-input100 validate-input" data-validate = "abstract is required">
+					<span class="label-input100">Your Academic Abstract</span>
+					<textarea class="input100" name="abstract" id="abstract" placeholder="Your abstract here..."></textarea>
+					<span class="focus-input100"></span>
+				</div>
+
+				<div class="container-contact100-form-btn">
+					<div class="wrap-contact100-form-btn">
+						<div class="contact100-form-bgbtn"></div>
+						<button class="contact100-form-btn" id="submit">
+							<span>
+								Explore
+								<i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
+							</span>
+						</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+
+
+
+	<div id="dropDownSelect1"></div>
+
+<!--===============================================================================================-->
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script> 
+	<script src="/static/vendor/jquery/jquery-3.2.1.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<!--===============================================================================================-->
+	<script src="/static/vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+	<script src="/static/vendor/bootstrap/js/popper.js"></script>
+	<script src="/static/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="/static/vendor/select2/select2.min.js"></script>
+	<script>
+		$(".selection-2").select2({
+			minimumResultsForSearch: 20,
+			dropdownParent: $('#dropDownSelect1')
+		});
+	</script>
+<!--===============================================================================================-->
+	<script src="/static/vendor/daterangepicker/moment.min.js"></script>
+	<script src="/static/vendor/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+	<script src="/static/vendor/countdowntime/countdowntime.js"></script>
+<!--	<script src="js/main.js"></script> -->
+
+<!--===============================================================================================-->
+<!-- <script>
+	$("#seachform").submit(function(e) {
+		var abstract = { 'abstract':document.getElementById("abstract").value };
+		$.ajax({
+			type: "POST",
+			url: "/search",
+			// The key needs to match your method's input parameter (case-sensitive).
+			data: JSON.stringify(abstract),
+			contentType: "application/json; charset=utf-8",
+			dataType: "json",
+			success: function(data){alert(data);},
+			failure: function(errMsg) {
+				alert(errMsg);
+			}
+		});
+		e.preventDefault(); // avoid to execute the actual submit of the form.
+	});
+
+	function postdata(){
+		var abstract = { 'abstract':document.getElementById("abstract").value };
+		$.ajax({
+			type: "POST",
+			url: "http://localhost:5000/search",
+			// The key needs to match your method's input parameter (case-sensitive).
+			data: JSON.stringify(abstract),
+			contentType: "application/json; charset=utf-8",
+			dataType: "json",
+			success: function(data){alert(data);},
+			failure: function(errMsg) {
+				alert(errMsg);
+			}
+		});
+	}
+	
+</script> -->
+
+</body>
+</html>
